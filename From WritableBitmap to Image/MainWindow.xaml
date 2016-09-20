@@ -7,6 +7,23 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="142*"/>
+            <ColumnDefinition Width="212*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="249*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="openFile" Grid.Column="0" Grid.Row="0" Content="Open file" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="75" Click="openFile_Click"/>
+        <Button x:Name="baseMethod" Grid.Column="1" Grid.Row="0" Content="Base method result" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="120" Click="baseMethod_Click"/>
+        <Button x:Name="externalMethod" Grid.Column="2" Grid.Row="0" Content="External method result" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" Width="130" Click="externalMethod_Click"/>
+        <Label x:Name="status" Content="Label" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Label x:Name="baseTime" Content="Label" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Label x:Name="externalTime" Content="Label" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <Grid Name="writeBm" Grid.ColumnSpan="3" Grid.Row="2"/>
+
     </Grid>
 </Window>
