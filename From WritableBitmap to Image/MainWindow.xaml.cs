@@ -2,7 +2,9 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -12,7 +14,7 @@ namespace From_WritableBitmap_to_Image
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial  class MainWindow : Window
     {
         WriteableBitmap wb;
 
@@ -22,8 +24,7 @@ namespace From_WritableBitmap_to_Image
                     
         }
 
-
-        //External method
+        //BmpBitmapEncoder method
         private System.Drawing.Image BitmapFromWriteableBitmap(WriteableBitmap writeBmp)
         {
             System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
@@ -36,12 +37,39 @@ namespace From_WritableBitmap_to_Image
                 enc.Frames.Add(BitmapFrame.Create((BitmapSource)writeBmp));
                 enc.Save(outStream);
                 bmp = new System.Drawing.Bitmap(outStream);
-            }
-            swatch.Stop();
-            externalTime.Content = swatch.Elapsed;
+                swatch.Stop();
+                externalTime.Content = swatch.Elapsed.Seconds + " sec " + swatch.Elapsed.TotalMilliseconds + " msec";
 
+                return bmp;
+            }
+
+        }
+
+        //CopyPixels method
+        private Bitmap GetBitmap(BitmapSource source)
+        {
+            System.Diagnostics.Stopwatch swatch = new System.Diagnostics.Stopwatch();
+            swatch.Start();
+            Bitmap bmp = new Bitmap(
+              source.PixelWidth,
+              source.PixelHeight,
+              System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            BitmapData data = bmp.LockBits(
+              new Rectangle(System.Drawing.Point.Empty, bmp.Size),
+              ImageLockMode.WriteOnly,
+              System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            source.CopyPixels(
+              Int32Rect.Empty,
+              data.Scan0,
+              data.Height * data.Stride,
+              data.Stride);
+            bmp.UnlockBits(data);
+
+            swatch.Stop();
+            externalTime1.Content = swatch.Elapsed.Seconds +" sec " + swatch.Elapsed.TotalMilliseconds + " msec";
             return bmp;
         }
+
 
 
         //Base method
@@ -72,13 +100,13 @@ namespace From_WritableBitmap_to_Image
                         }
                     }
                 swatch.Stop(); 
-                baseTime.Content = swatch.Elapsed; 
+                baseTime.Content = swatch.Elapsed.Seconds + " sec " + swatch.Elapsed.TotalMilliseconds + " msec";
 
-                return (System.Drawing.Bitmap)bm;                
+            return (System.Drawing.Bitmap)bm;                
             
         }
 
-        //Load writableBitmap
+        //Load writeableBitmap
         private void openFile_Click(object sender, RoutedEventArgs e)
         {
 
@@ -127,5 +155,10 @@ namespace From_WritableBitmap_to_Image
         {             
             var tmp = BitmapFromWriteableBitmap(wb);
         }
+
+        private void externalMethod2_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = GetBitmap(wb);
+        }               
     }
 }

@@ -5,25 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:From_WritableBitmap_to_Image"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="345.793" Width="828.726">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="142*"/>
-            <ColumnDefinition Width="212*"/>
-            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="207*"/>
+            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="240*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="31*"/>
-            <RowDefinition Height="39*"/>
-            <RowDefinition Height="249*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="96*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="openFile" Grid.Column="0" Grid.Row="0" Content="Open file" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="75" Click="openFile_Click"/>
-        <Button x:Name="baseMethod" Grid.Column="1" Grid.Row="0" Content="Base method result" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="120" Click="baseMethod_Click"/>
-        <Button x:Name="externalMethod" Grid.Column="2" Grid.Row="0" Content="External method result" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" Width="130" Click="externalMethod_Click"/>
-        <Label x:Name="status" Content="Label" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <Label x:Name="baseTime" Content="Label" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <Label x:Name="externalTime" Content="Label" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-        <Grid Name="writeBm" Grid.ColumnSpan="3" Grid.Row="2"/>
+        <Button x:Name="openFile" Grid.Column="0" Grid.Row="0" Content="Open file" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Width="75" Click="openFile_Click" Height="20"/>
+        <Button x:Name="baseMethod" Grid.Column="1" Grid.Row="0" Content="Base method result" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="143" Click="baseMethod_Click" Height="20"/>
+        <Button x:Name="externalMethod" Grid.Column="2" Grid.Row="0" Content="BMPEncode method result" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="199" Click="externalMethod_Click" Height="20"/>
+        <Button x:Name="externalMethod2" Grid.Column="3" Grid.Row="0" Content="CopyPixels method result" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="199"  Height="20" Click="externalMethod2_Click"/>
+
+        
+        <Label x:Name="status" Content="Label" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="26" Width="130"/>
+        <Label x:Name="baseTime" Content="Label" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="26" Width="163"/>
+        <Label x:Name="externalTime" Content="Label" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0" Height="26" Width="173"/>
+        <Label x:Name="externalTime1" Content="Label" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0" Height="26" Width="189"/>
+        
+        <Grid Name="writeBm" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5"/>
+
 
     </Grid>
 </Window>
